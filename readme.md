@@ -1,4 +1,4 @@
-# PHP User CRUD
+# PHP/MySQL User CRUD
 User CRUD using PHP, MySQL, and Materialize
 
 ## Using
