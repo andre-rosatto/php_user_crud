@@ -30,7 +30,6 @@
 	$result->execute();
 	$pageCount = ceil($result->fetchColumn() / $pageSize);
 
-	$result->closeCursor();
 	$conn = null;
 ?>
 

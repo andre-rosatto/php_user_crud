@@ -6,7 +6,6 @@
 		$result = $conn->query($statement);
 		$user = $result->fetch(PDO::FETCH_ASSOC);
 	} else {
-		$result.closeCursor();
 		$conn = null;
 		header('Location: index.php');
 	}
