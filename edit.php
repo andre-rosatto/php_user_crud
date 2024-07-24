@@ -2,7 +2,7 @@
 	$errors = array();
 	if (isset($_GET['id'])) {
 		include 'config/connect_db.php';
-		$statement = "SELECT id, name, email, birth_date, created_at FROM users where id={$_GET['id']}";
+		$statement = 'SELECT id, name, email, birth_date, created_at FROM users where id=' . htmlspecialchars($_GET['id']);
 		$result = $conn->query($statement);
 		$user = $result->fetch(PDO::FETCH_ASSOC);
 	} else {
@@ -38,7 +38,7 @@
 <?php include 'templates/navbar.php' ?>
 
 <main class="container">
-	<form action="<?php echo "{$_SERVER['PHP_SELF']}?id={$_GET['id']}"; ?>" method="POST">
+	<form action="<?php echo $_SERVER['PHP_SELF'] . '?id=' . htmlspecialchars($_GET['id']); ?>" method="POST">
 		<h3 class="center">User Details</h3>
 		<label for="name">Name:</label>
 		<input required type="text" name="name" value="<?php echo $user['name']; ?>">

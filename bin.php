@@ -18,7 +18,7 @@
 	}
 
 	$pageSize = 50;
-	$page = $_GET['page'] ?? 0;
+	$page = htmlspecialchars($_GET['page'] ?? 0);
 	$offset = $page * $pageSize;
 	
 	$statement = "SELECT id, name, email, birth_date, created_at FROM users WHERE !is_active ORDER BY created_at DESC LIMIT $pageSize OFFSET $offset";
