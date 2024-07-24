@@ -8,7 +8,6 @@
 		$user['birth_date'] = $_POST['birth_date'];
 
 		include 'config/validate.php';
-		validate($user, $errors);
 
 		if (!array_filter($errors)) {
 			include 'config/connect_db.php';

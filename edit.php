@@ -1,5 +1,5 @@
 <?php
-	$errors = ['name' => '', 'email' => ''];
+	$errors = array();
 	if (isset($_GET['id'])) {
 		include 'config/connect_db.php';
 		$statement = "SELECT id, name, email, birth_date, created_at FROM users where id={$_GET['id']}";
@@ -17,7 +17,6 @@
 		$user['birth_date'] = $_POST['birth_date'];
 
 		include 'config/validate.php';
-		validate($user, $errors);
 
 		if (!array_filter($errors)) {
 			$name = $user['name'];
@@ -44,11 +43,11 @@
 		<h3 class="center">User Details</h3>
 		<label for="name">Name:</label>
 		<input required type="text" name="name" value="<?php echo $user['name']; ?>">
-		<div class="red-text"><?php echo $errors['name']; ?></div>
+		<div class="red-text"><?php echo $errors['name'] ?? ''; ?></div>
 		
 		<label for="name">Email:</label>
 		<input required type="email" name="email" value="<?php echo $user['email']; ?>">
-		<div class="red-text"><?php echo $errors['email']; ?></div>
+		<div class="red-text"><?php echo $errors['email'] ?? ''; ?></div>
 
 		<label for="name">Birth date:</label>
 		<input required type="date" name="birth_date" value="<?php echo $user['birth_date']; ?>">
